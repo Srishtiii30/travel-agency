@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Agency - Booking</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file here -->
+</head>
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* White background */
+  }
+
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(245, 247, 244) 50%, rgb(248, 160, 219) 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+  }
+
+  .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+  }
+
+  .bg3 {
+    animation-duration: 5s;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+
+    100% {
+      transform: translateX(25%);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+  <header>
+    <nav>
+      <!-- Navigation menu or logo goes here -->
+    </nav>
+  </header>
+
+  <section id="Sign-up">
+    <div class="container">
+      <h2>Booking Form</h2>
+      <form action="connect.php" method="post"> 
+        <!-- Replace 'connect.php' with the URL of the PHP script to process the booking -->
+        <br>
+        <div>
+          <label for="customer_id">customer_id:</label>
+          <input type="text" id="customer_id" name="customer_id" required>
+        </div>
+
+        <div>
+          <label for="name">name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+          <label for="email">email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+          <label for="address">address:</label>
+          <input type="text" id="address" name="address" required>
+        </div>
+
+        <div>
+          <label for="phone_no">phone no:</label>
+          <input type="tel" id="phone_no" name="phone_no" required>
+        </div>
+
+        <div>
+          <label for="password">password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+
+        <br>
+        <input type="submit" value="Book Now">
+        <br>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <!-- Footer content goes here -->
+  </footer>
+</body>
+</html>

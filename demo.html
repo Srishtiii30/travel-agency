@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rakt - Home</title>
+</head>
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="content"></div>
+  <style>
+    pre {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #c00c0c;
+      background-blend-mode:lighten;
+      border-radius: none;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      width:200px;
+      color:black
+}
+
+    .bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(245, 247, 244) 50%, rgb(248, 160, 219) 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+}
+ 
+.bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+}
+ 
+.bg3 {
+    animation-duration:5s;
+}
+ 
+ 
+h1 {
+    font-family:monospace;
+}
+ 
+@keyframes slide {
+    0% {
+        transform:translateX(-25%);
+    }
+ 
+    100% {
+        transform:translateX(25%);
+    }
+}
+
+main {
+    padding: 20px;
+}
+
+</style>
+<pre>
+    <div>
+    <h1>Blood Bank Helpline</h1>
+        <a href="% url 'registration' %" class="btn"><btn>Register</btn></a>
+
+
+
+        <a href="% url 'listing' %" class="btn"><btn>Donor Listing</btn></a>
+
+    </div>
+    </pre>
+</html>
