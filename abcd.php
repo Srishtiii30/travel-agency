@@ -49,30 +49,28 @@
 </style>
 </head>
 <body>
-  
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
-  
+  <header>
+    <nav>
+      <!-- Navigation menu or logo goes here -->
+    </nav>
+  </header>
+
   <section id="Sign-up">
     <div class="container">
-      <h2>Booking Form</h2>
-      <form action="connect.php" method="post"> 
+      <h2>Sign-up</h2>
+      <form action="" method="post"> 
         <!-- Replace 'connect.php' with the URL of the PHP script to process the booking -->
         <br>
-        <div>
-          <label for="customer_id">customer_id:</label>
-          <input type="text" id="customer_id" name="customer_id" required>
-        </div>
-
         <div>
           <label for="name">name:</label>
           <input type="text" id="name" name="name" required>
         </div>
-
         <div>
           <label for="email">email:</label>
-          <input type="email" id="email" name="email" required>
+          <input type="text" id="email" name="email" required>
         </div>
 
         <div>
@@ -81,15 +79,13 @@
         </div>
 
         <div>
-          <label for="phone_no">phone no:</label>
-          <input type="tel" id="phone_no" name="phone_no" required>
+          <label for="phone">phone_no:</label>
+          <input type="tel" id="phone" name="phone" required>
         </div>
-
         <div>
           <label for="password">password:</label>
           <input type="password" id="password" name="password" required>
         </div>
-
 
         <br>
         <input type="submit" value="Book Now">
@@ -103,3 +99,41 @@
   </footer>
 </body>
 </html>
+<?php
+//echo "This PHP script is being executed.";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $host = 'localhost';
+    $dbUsername = 'root';
+    $dbPassword = '';
+    $dbName = 'travel';
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+
+    $connection = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+
+    if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+    }
+
+    // Use prepared statement to prevent SQL injection
+    $sql = "INSERT INTO signup(name,email,address,phone,password) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("sssis", $name, $email, $address, $phone, $password);
+
+    if ($stmt->execute()) {
+        echo "Record inserted successfully.";
+        header('location:cid.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . $connection->error;
+    }
+
+    $stmt->close();
+    $connection->close();
+}
+
+?>
